@@ -52,11 +52,11 @@ puzzle01 = Puzzle {..}
     solveB = fst . countRollingZeros 50
 
 
-data Turn = L Int | R Int
+data Turn = L Integer | R Integer
   deriving (Show, Eq)
 
 
-countEndingZeros :: Int -> [Turn] -> (Int, Int)
+countEndingZeros :: Integer -> [Turn] -> (Integer, Integer)
 countEndingZeros start deltas = foldl' step (0, start) deltas
   where
     step (cnt, acc) delta =
@@ -66,7 +66,7 @@ countEndingZeros start deltas = foldl' step (0, start) deltas
             else (cnt, acc')
 
 
-turn :: Turn -> (Int, Int) -> (Int, Int)
+turn :: Turn -> (Integer, Integer) -> (Integer, Integer)
 turn (L 0) (cnt, pos) = (cnt, pos)
 turn (R 0) (cnt, pos) = (cnt, pos)
 turn (L n) (cnt, pos) = turn (L (n - 1)) (cnt', pos')
@@ -79,5 +79,5 @@ turn (R n) (cnt, pos) = turn (R (n - 1)) (cnt', pos')
     cnt' = if pos' == 0 then cnt + 1 else cnt
 
 
-countRollingZeros :: Int -> [Turn] -> (Int, Int)
+countRollingZeros :: Integer -> [Turn] -> (Integer, Integer)
 countRollingZeros start deltas = foldl' (flip turn) (0, start) deltas

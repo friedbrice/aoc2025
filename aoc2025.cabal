@@ -58,6 +58,5 @@ library
 
   build-depends:
     containers,
-    megaparsec,
     split,
     text,

@@ -4,7 +4,7 @@ import Common
 import Data.List.Split
 
 
-puzzle02 :: Puzzle [(Int, Int)]
+puzzle02 :: Puzzle [(Integer, Integer)]
 puzzle02 = Puzzle {..}
   where
     inputPath = "resources/Day02.txt"
@@ -56,7 +56,7 @@ puzzle02 = Puzzle {..}
     solveB = sum . fmap (sumInvalids complexInvalid)
 
 
-simpleInvalid :: Int -> Bool
+simpleInvalid :: Integer -> Bool
 simpleInvalid n = front == back
   where
     digs = show n
@@ -64,7 +64,7 @@ simpleInvalid n = front == back
     (front, back) = splitAt (len `div` 2) digs
 
 
-complexInvalid :: Int -> Bool
+complexInvalid :: Integer -> Bool
 complexInvalid = any allEqual . allChunks . show
   where
     allEqual [] = True
@@ -75,5 +75,5 @@ complexInvalid = any allEqual . allChunks . show
     allDivisors k = filter (\d -> k `mod` d == 0) [1 .. k `div` 2]
 
 
-sumInvalids :: (Int -> Bool) -> (Int, Int) -> Int
+sumInvalids :: (Integer -> Bool) -> (Integer, Integer) -> Integer
 sumInvalids isInvalid (a, b) = sum $ filter isInvalid [a .. b]
