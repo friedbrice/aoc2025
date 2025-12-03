@@ -1,0 +1,63 @@
+cabal-version: 3.0
+name: aoc2025
+version: 0.1.0.0
+author: Daniel Brice
+maintainer: danielbrice@gmail.com
+copyright: Daniel Brice
+license: BSD-3-Clause
+license-file: LICENSE
+build-type: Simple
+
+common opts
+  default-language: GHC2021
+  build-depends: base >=4.7 && <5
+  ghc-options:
+    -Wall
+    -Wcompat
+    -Widentities
+    -Wincomplete-record-updates
+    -Wincomplete-uni-patterns
+    -Wmissing-home-modules
+    -Wpartial-fields
+    -Wredundant-constraints
+    -O2
+
+  default-extensions:
+    DerivingVia
+    DuplicateRecordFields
+    NamedFieldPuns
+    NoFieldSelectors
+    OverloadedRecordDot
+    OverloadedStrings
+    RecordWildCards
+
+executable aoc2025-exe
+  import: opts
+  main-is: Main.hs
+  hs-source-dirs: src/aoc2025-exe
+  build-depends: aoc2025
+
+library
+  import: opts
+  hs-source-dirs: src/aoc2025
+  exposed-modules:
+    AOC
+    Common
+    Day01
+    Day02
+    Day03
+    Day04
+    Day05
+    Day06
+    Day07
+    Day08
+    Day09
+    Day10
+    Day11
+    Day12
+
+  build-depends:
+    containers,
+    megaparsec,
+    split,
+    text,

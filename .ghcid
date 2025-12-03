@@ -1,0 +1,9 @@
+--command="cabal repl"
+--no-height-limit
+--reverse-errors
+--clear
+--warnings
+--restart=aoc2025.cabal
+--outputfile=ghcid.txt
+--allow-eval
+--run=":l AOC"
