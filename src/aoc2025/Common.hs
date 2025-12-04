@@ -5,6 +5,7 @@ module Common (
   module Data.Function,
   module Data.Functor.Identity,
   module Data.Maybe,
+  module Data.Monoid,
   module Data.Void,
   module Debug.Trace,
   HasCallStack,
@@ -20,6 +21,7 @@ import Data.Function
 import Data.Functor.Identity
 import Data.Map.Strict qualified as M
 import Data.Maybe
+import Data.Monoid
 import Data.Set qualified as S
 import Data.Text qualified as T
 import Data.Void
