@@ -29,7 +29,7 @@ puzzle03 = Puzzle {..}
 
     solutionB = 168_617_068_915_447
 
-    parseInput = (fmap . fmap) (read . pure) . lines
+    parseInput = (fmap . fmap) (read' "puzzle03: parseInput" . pure) . lines
 
     solveA = sum . fmap maxJoltage2
 
@@ -43,14 +43,16 @@ maxJoltage2 rest = error $ "maxJoltage: Invalid input: " <> show rest
 
 
 maxJoltage12 :: [Integer] -> Integer
-maxJoltage12 xs = maximum [read (join $ fmap show cs) | cs <- candidates]
+maxJoltage12 xs =
+  maximum [read' "maxJoltage12" (join $ fmap show cs) | cs <- candidates]
   where
     candidates = filter ((12 ==) . length) (powerList xs)
 
 
 -- https://www.reddit.com/r/haskell/comments/1pcvbid/comment/ns3b82b/
 maxJoltage12' :: [Integer] -> Integer
-maxJoltage12' = read . selectMax 12 . withIndex . reverse . asChars
+maxJoltage12' =
+  read' "maxJoltage12'" . selectMax 12 . withIndex . reverse . asChars
   where
     asChars = join . fmap show
 
