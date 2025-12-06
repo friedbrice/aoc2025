@@ -48,6 +48,10 @@ read' lbl raw =
     Nothing -> error $ lbl <> ": invalid input: " <> show raw
 
 
+trim :: String -> String
+trim = dropWhile (== ' ') . reverse . dropWhile (== ' ') . reverse
+
+
 data Puzzle a = Puzzle
   { inputPath :: FilePath
   , sampleInput :: String
